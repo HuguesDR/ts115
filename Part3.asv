@@ -1,0 +1,13 @@
+%Manipulation 3
+N=1000;
+sigma=[2 1;1 2];
+[U,D]=eig(sigma);
+sigma2=U*D.^(0.5)*U;
+mu=[0.2;0.2];
+x=randn(2,N);
+y = mu +sigma2*x;
+figure;
+subplo
+histo2D(transpose(y),[-5,5],100,[-5,5],1000,"valeur de y(1)","valeur de y(2)","Répartition de y");
+histo2D(transpose(y),[-5,5],100,[-5,5],1000,"valeur de y(1)","valeur de y(2)","Répartition de y");
+
