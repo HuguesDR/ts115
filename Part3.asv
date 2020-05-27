@@ -21,6 +21,6 @@ X3=X_pluv(:,3);
 Y1=[X1,X2];
 Y2=[X1,X3];
 Y3=[X2,X3];
-BN=cov(Y1);
-BS=cov(Y2);
-NS=cov(Y3);
+BNcov(Y1)
+cov(Y2)
+cov(Y3)

@@ -28,4 +28,4 @@ figure , pcolor(X,Y,H) ;
 % Ymid = 0.5*(Y(1:end-1)+Y(2:end)) ;
 % figure , pcolor(Xmid,Ymid,H) ; 
 colorbar ; shading flat ; axis square tight ; grid on ; 
-xlabel(Xlab) ; xlabel(Ylab) ; title(Title) ;
+xlabel(Xlab) ; ylabel(Ylab) ; title(Title) ;
