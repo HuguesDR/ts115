@@ -14,5 +14,13 @@ histo2D(transpose(x),[-5,5],300,[-5,5],300,"valeur de x(1)","valeur de x(2)","RÃ
 %Manipulation 5
 correlation = corrcoef(x,y);
 %Manipulation 6
-
-
+X1=X_pluv(:,1);
+X2=X_pluv(:,2);
+X3=X_pluv(:,3);
+%Manipulation 7
+Y1=[X1,X2];
+Y2=[X1,X3];
+Y3=[X2,X3];
+cov(Y1);
+cov(Y2);
+cov(Y3);
