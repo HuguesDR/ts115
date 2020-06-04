@@ -1,3 +1,7 @@
+close all
+clear
+clc
+load('X_pluv.mat');
 %% Manipulation 3
 N=1000;
 sigma=[2 1;1 2];
@@ -71,20 +75,32 @@ for i=1:1:Nc
 end
 
 %%%% Calcul de la densité de Y1
-
+mu_1=mean(X_pluv(:,1));
+mu_2=mean(X_pluv(:,2));
+mu_3=mean(X_pluv(:,3));
 P_Y1=zeros(1,Nc);
 for i=1:1:Nc
     for k=1:1:Nc
-        P_Y1(k)=(1/m.sqrt(2*m.pi)
+        P_Y1(k) = (1/sqrt(2*pi)*BN(k)) * exp((-1/2*BN(k))*((x-mu_1).^2+(x-mu_2).^2));
     end
     
 end
+%%%% Calcul de la densité de Y2
+
+P_Y2=zeros(1,Nc);
+for i=1:1:Nc
+    for k=1:1:Nc
+        P_Y2(k) = (1/sqrt(2*pi)*BS(k)) * exp((-1/2*BS(k))*((x-mu_1).^2+(x-mu_3).^2));
+    end
+    
+end
+
 %%%% Calcul de la densité de Y3
 
 P_Y3=zeros(1,Nc);
 for i=1:1:Nc
     for k=1:1:Nc
-        P_Y3(k)=(1/m.sqrt(2*m.pi)
+        P_Y3(k) = (1/sqrt(2*pi)*NS(k)) * exp((-1/2*NS(k))*((x-mu_2).^2+(x-mu_3).^2));
     end
     
 end
@@ -92,7 +108,7 @@ end
 %%% Calcul de l'information mutuelle
 I=0; % initialisation
 %%%% pour (Y1,Y2)
-sum(P_Y1*m.log(P_Y1/P_Y2)
+sum(P_Y1*m.log(P_Y1/P_Y2))
 
 %%%% pour (Y1,Y3)
-sum(P_Y1*m.log(P_Y1/P_Y3)
+sum(P_Y1*m.log(P_Y1/P_Y3))
