@@ -32,26 +32,26 @@ Nc = 100;               %   Nombre de classes (fixé arbitrairement)
 %%%% Calcul de la densité de X1
 max_x1 = max(X_pluv(:,1));
 min_x1 = max(X_pluv(:,1));
-Pi1=zeros(1,Nc);
+P_X1=zeros(1,Nc);
 for i=1:1:Nc
     Ci_min = (i-1)*(max_x1-min_x1)/Nc;
     Ci_max = i    *(max_x1-min_x1)/Nc;
     for k=1:1:Nc
         if Ci_min<X_pluv(k,1)<Ci_max
-            Pi1(i)=Pi1(i)+1/Nc;
+            P_X1(i)=Pi1(i)+1/Nc;
         end
     end
 end
 %%%% Calcul de la densité de X2
 max_x2 = max(X_pluv(:,2));
 min_x2 = max(X_pluv(:,2));
-Pi2=zeros(1,Nc);
+P_X2=zeros(1,Nc);
 for i=1:1:Nc
     Ci_min = (i-1)*(max_x2-min_x1)/Nc;
     Ci_max = i    *(max_x2-min_x1)/Nc;
     for k=1:1:Nc
         if Ci_min<X_pluv(k,2)<Ci_max
-            Pi2(i)=Pi2(i)+1/Nc;
+            P_X2(i)=P_X2(i)+1/Nc;
         end
     end
     
@@ -59,40 +59,40 @@ end
 %%%% Calcul de la densité de X3
 max_x3 = max(X_pluv(:,3));
 min_x3 = max(X_pluv(:,3));
-Pi3=zeros(1,Nc);
+P_X3=zeros(1,Nc);
 for i=1:1:Nc
     Ci_min = (i-1)*(max_x3-min_x3)/Nc;
     Ci_max = i    *(max_x3-min_x3)/Nc;
     for k=1:1:Nc
         if Ci_min<X_pluv(k,3)<Ci_max
-            Pi3(i)=Pi3(i)+1/Nc;
+            P_X3(i)=P_X3(i)+1/Nc;
         end
     end 
 end
 
 %%%% Calcul de la densité de Y1
 
+P_Y1=zeros(1,Nc);
 for i=1:1:Nc
-    Ci_min = (i-1)*(max_x1-min_x1)/Nc;
-    Ci_max = i    *(max_x1-min_x1)/Nc;
     for k=1:1:Nc
-        if Ci_min<X_pluv(k,1)<Ci_max
-            Pi(i)=Pi(i)+1/Nc;
-        end
+        P_Y1(k)=(1/m.sqrt(2*m.pi)
     end
     
 end
 %%%% Calcul de la densité de Y3
-max_x1 = max(X_pluv(:,1));
-min_x1 = max(X_pluv(:,1));
-Pi=zeros(1,Nc);
+
+P_Y3=zeros(1,Nc);
 for i=1:1:Nc
-    Ci_min = (i-1)*(max_x1-min_x1)/Nc;
-    Ci_max = i    *(max_x1-min_x1)/Nc;
     for k=1:1:Nc
-        if Ci_min<X_pluv(k,1)<Ci_max
-            Pi(i)=Pi(i)+1/Nc;
-        end
+        P_Y3(k)=(1/m.sqrt(2*m.pi)
     end
     
 end
+
+%%% Calcul de l'information mutuelle
+I=0; % initialisation
+%%%% pour (Y1,Y2)
+sum(P_Y1*m.log(P_Y1/P_Y2)
+
+%%%% pour (Y1,Y3)
+sum(P_Y1*m.log(P_Y1/P_Y3)
